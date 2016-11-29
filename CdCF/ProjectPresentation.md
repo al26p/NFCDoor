@@ -16,13 +16,13 @@ To avoid :
   - 
 
 Soft/hard ware required :
-  Hardware :
+  - Hardware :
     - Computer (Raspberry Pi &/ Arduino)
     - NFC reader 
     - Servomotor, DC motor w/ coder, Stepper motor
     - Driver/Regulation Card (link between Computer and motors)
     - Obvious, NFC cards
-  Software : 
+  - Software : 
     - Open Softwares
     - Rasp/Arduino Libraries
     - Home-made code 
