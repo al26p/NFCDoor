@@ -53,6 +53,9 @@ void setup() {
 }
 
 void loop () {
+
+
+  
   byte val = 0; // Temp variable to hold the current byte
   if ( ! rfid.PICC_IsNewCardPresent())
     return;
@@ -72,6 +75,24 @@ void loop () {
   printHex(rfid.uid.uidByte, rfid.uid.size);
   Serial.println();
 
+  boolean resultTest=true;
+ 
+  for (int x=0; x<6; x++){ 
+    int test1 = readCard[x];// asign each index of arrays to test, one by one and compare
+    int test2 = storedCard[x];
+    if(test1 != test2) {
+      resultTest = false;
+    }
+  }
+  if (resultTest){
+    //On a reconnu la carte
+  }
+
+
+            //Comparaison card
+            //Need to interract with eeprom
+            //Compare with multiple cards
+            //Action when it's master card
   
 }
 
