@@ -1,20 +1,28 @@
 
 /*
-Version using BT module 
-BT is connected to serial  
-stepper is connected STEP = 5 DIR = 6
+ Stepper Motor Control - one revolution
+
+ This program drives a unipolar or bipolar stepper motor.
+ The motor is attached to digital pins 8 - 11 of the Arduino.
+
+ The motor should revolve one revolution in one direction, then
+ one revolution in the other direction.
 
 
-By Alban P.
+ Created 11 Mar. 2007
+ Modified 30 Nov. 2009
+ by Tom Igoe
 
  */
 
 #define stp 5
 #define dir 6
+#define button 3
   String readString;
   String code = "1865";
   String Read;
   boolean Open = true;
+  int buttonState = 0;
 
 const int stepsPerRevolution = 200;  // change this to fit the number of steps per revolution
 // for your motor
@@ -26,9 +34,11 @@ void setup() {
   Serial.begin(9600);
   pinMode(stp, OUTPUT);
   pinMode(dir, OUTPUT);
+  pinMode(button, INPUT);
 }
 
 void loop() {
+  buttonState = digitalRead(button);
    while (Serial.available()) {
      delay(10);  
      if (Serial.available() >0) {
@@ -48,7 +58,11 @@ void loop() {
      
      readString="";
   }
-  
+
+   if (buttonState == HIGH) {
+    Action();
+    delay(1000);
+   }
 
 }
 
