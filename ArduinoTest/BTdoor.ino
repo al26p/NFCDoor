@@ -54,6 +54,12 @@ void loop() {
 
      if (Read==code){
       Action();
+     }else if (Read=="stat"){
+      if(Open){
+       Serial.println("OUVERT");
+      } else{
+       Serial.println("FERME");
+      }
      }
      
      readString="";
